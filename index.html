@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Charcoal Realty Kingston, NY</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    </head>
+    <style>
+        body {
+            background: url('img/ng.png');
+            background-repeat: no-repeat;
+            background-color: #c4c4c4;
+            background-size: cover;
+            margin:0;
+        }
+        body * {
+            box-sizing: border-box;
+        }
+        .Container.Logo img {
+            margin: 0 auto !important;
+            display: block;
+        }
+        .Container.PageContainer {
+            overflow: hidden;
+            max-width: 1480px;
+            margin: 0 auto;
+            width: 90%;
+        }
+        .listing.Single {
+            width: 25%;
+            float: left;
+            padding: 15px;
+        }
+        .listing.Single img {
+            width: 100%;
+            margin-bottom:-5px;
+        }
+        .c1, .c2, .c3 {
+            width: 33%;
+            float: left;
+            display: block;
+        }
+        .form {
+            width: 60%;
+            margin: 0 auto;
+            display: block;
+            margin-top: 120px;
+        }
+        #text, #Search {
+            font-size: 36px;
+            border-radius: 3px;
+            box-shadow: none !important;
+            border: 1px solid #a7a7a7;
+            color: black !important;
+            background: #f2f2f2ee;
+            padding: 5px;
+        }
+        #text {width:75%;margin-right:1%}
+        #Search {width:24%}
+        .bed::before {
+            content: "";
+            display: inline-block;
+            background: url('img/beds.svg');
+            width: 20px;
+            height: 20px;
+            background-repeat: no-repeat;
+            content: "";
+            vertical-align: middle;
+            background-size: contain;
+            margin-right: 5px;
+        }
+        .bath::before {
+            content: "";
+            display: inline-block;
+            background: url('img/baths.svg');
+            width: 20px;
+            height: 20px;
+            background-repeat: no-repeat;
+            content: "";
+            vertical-align: middle;
+            background-size: contain;
+            margin-right: 5px;
+        }
+        .sqft::before {
+            content: "";
+            display: inline-block;
+            background: url('img/area.svg');
+            width: 20px;
+            height: 20px;
+            background-repeat: no-repeat;
+            content: "";
+            vertical-align: middle;
+            background-size: contain;
+            margin-right: 5px;
+        }
+        .bed, .bath {
+            float: left;
+            margin-right: 20px;
+        }
+        .sqft {
+            float: right;
+        }
+        .info, .dprice, .dlistid {
+            overflow: hidden;
+            background: #f2f2f2;
+            padding:12px;
+        }
+        .info {
+            overflow: hidden;
+            padding-top:15px;
+        }
+        .inner {
+            box-shadow: 2px 2px 2px #ffffff61;
+        }
+        .Container.Navigator {
+            overflow: hidden;
+            max-width: 1480px;
+            margin: 0 auto;
+            width: 90%;
+            padding:15px;
+            position: relative;
+            text-align: center;
+        }
+        .prev, .pagination, .next {
+            display: inline;
+        }
+        .prev {
+            position: absolute;
+            left:15px;
+        }
+        .next {
+            position: absolute;
+            right:15px;
+        }
+        .pagination span {
+            width: 20px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .nextBtn, .prevBtn {
+            cursor: pointer;
+        }
+    </style>
+    <body>
+        <div class="Container Logo">
+            <img src="img/logo.svg" />
+        </div>
+        <div class="Container FormContainer">
+            <div class="form">
+                <input type="text" class="text" id="text" placeholder="type anything" /><input type="button" value="Search" id="Search"/>
+            </div>
+        </div>
+        <div class="Container Results">
+            <div class="Container PageContainer">
+                <div id="Page1" class="Page1">
+                    
+                </div>
+                <div id="Page2" class="Page2" style="display:none">
+                    
+                </div>
+                <div id="Page3" class="Page3" style="display:none">
+                    
+                </div>
+                <div id="Page4" class="Page4" style="display:none">
+                    
+                </div>
+                <div id="Page5" class="Page5" style="display:none">
+                    
+                </div>
+                <div id="Page6" class="Page6" style="display:none">
+                    
+                </div>
+                <div id="Page7" class="Page7" style="display:none">
+                    
+                </div>
+                <div id="Page8" class="Page8" style="display:none">
+                    
+                </div>
+                <div id="Page9" class="Page9" style="display:none">
+                    
+                </div>
+                <div id="Page10" class="Page10" style="display:none">
+                    
+                </div>
+            </div>
+            <div class="Container Navigator">
+                <div class="prev">
+                    <span class="prevBtn">Previous</span>
+                </div>
+                <div class="pagination">
+                    <span class="_1">1</span><span class="_2">2</span><span class="_3">3</span><span class="_4">4</span><span class="_5">5</span><span class="_6">6</span><span class="_7">7</span><span class="_8">8</span><span class="_9">9</span><span class="_10">10</span>
+                </div>
+                <div class="next">
+                    <span class="nextBtn">Next</span>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var activePage = 0;
+        document.querySelector("._1").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 1) {
+                activePage = 1;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._2").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 2) {
+                activePage = 2;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._3").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 3) {
+                activePage = 3;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._4").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 4) {
+                activePage = 4;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._5").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 5) {
+                activePage = 5;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._6").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 6) {
+                activePage = 6;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._7").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 7) {
+                activePage = 7;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._8").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 8) {
+                activePage = 8;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._9").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 9) {
+                activePage = 9;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector("._10").onclick = function() {
+            document.querySelector("#Page"+activePage).style.display = "none";
+            if(activePage != 10) {
+                activePage = 10;
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }else {
+                document.querySelector("#Page"+activePage).style.display = "block";
+            }
+        }
+        document.querySelector(".nextBtn").onclick = function() {
+            if(activePage != 10) {
+                document.querySelector("#Page"+activePage).style.display = "none";
+                document.querySelector("#Page"+(activePage + 1).toString()).style.display = "block";
+                activePage++;
+            }
+        }
+        document.querySelector(".prevBtn").onclick = function() {
+            if(activePage != 1) {
+                document.querySelector("#Page"+activePage).style.display = "none";
+                document.querySelector("#Page"+(activePage - 1).toString()).style.display = "block";
+                activePage--;
+            }
+        }
+        function getAListing() {
+            var price = Math.floor(Math.random() * 3000000) + 200000;
+            price = price - (price % 1000);
+            var imgURL = "img/img (" + (((Math.floor(Math.random() * 1140474) + 114) % 114) + 1).toString() + ").png"; 
+            var nbed = 0;
+            var nbath = 0;
+            var sqft = 0;
+            var listid = "2" + Math.floor(Math.random() * 990000) + 100000;
+            if(price < 500000) {
+                nbed = 2;
+                nbath = 1;
+                sqft = Math.floor(Math.random() * 1800) + 900;
+            }
+            else if (price < 1000000) {
+                nbed = 3;
+                nbath = 3;
+                sqft = Math.floor(Math.random() * 1801) + 4050;
+            }else {
+                nbed = Math.floor(Math.random() * 7) + 3;
+                nbath = Math.floor(Math.random() * 5) + 2; 
+                sqft = Math.floor(Math.random() * 4051) + 9000;
+            }
+            var obj = {
+                'price': price,
+                'nbed': nbed,
+                'nbath': nbath,
+                'listid':listid,
+                'imgURL': imgURL,
+                'sqft':sqft
+            };
+            return obj;
+        }
+        function makeAListing(pnum) {
+            var r = getAListing();
+            var cfr = "<div class='listing Single'><div class='inner'><img src='" + r.imgURL + "' /><div class='info'><span class='bed'>" + r.nbed + "</span><span class='bath'>" + 
+                r.nbath + "</span><span class='sqft'>" + r.sqft + "</span></div><div class='dprice'><p class='price'> " + 
+                r.price + " </p></div><div class='dlistid'><p class='listid'> " + r.listid +  " </p></div></div></div>";
+                document.querySelector('#Page' + pnum).innerHTML += cfr;
+        }
+        function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+        }
+        function preparePage(n) {
+            for(var i = 0; i < 12; i++) {
+                makeAListing(n);
+                delay(1).then(() => console.log('Data Retention: OK'));
+            }
+        }
+        function clearPages(n) {
+            document.querySelector('#Page1').innerHTML = "";
+            document.querySelector('#Page2').innerHTML = "";
+            document.querySelector('#Page3').innerHTML = "";
+            document.querySelector('#Page4').innerHTML = "";
+            document.querySelector('#Page5').innerHTML = "";
+            document.querySelector('#Page6').innerHTML = "";
+            document.querySelector('#Page7').innerHTML = "";
+            document.querySelector('#Page8').innerHTML = "";
+            document.querySelector('#Page9').innerHTML = "";
+            document.querySelector('#Page10').innerHTML = "";
+            document.querySelector('#Page1').style.display = "block";
+            document.querySelector('#Page2').style.display = "none";
+            document.querySelector('#Page3').style.display = "none";
+            document.querySelector('#Page4').style.display = "none";
+            document.querySelector('#Page5').style.display = "none";
+            document.querySelector('#Page6').style.display = "none";
+            document.querySelector('#Page7').style.display = "none";
+            document.querySelector('#Page8').style.display = "none";
+            document.querySelector('#Page9').style.display = "none";
+            document.querySelector('#Page10').style.display = "none";
+
+        }
+        var isInitiated = false;
+        var input = document.getElementById("text");
+        input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("Search").click();
+        }
+        });
+        var submit = document.getElementById("Search");
+        submit.addEventListener("click", function(event) {
+            event.preventDefault();
+            if(!isInitiated) {
+                preparePage(1);
+                preparePage(2);
+                preparePage(3);
+                preparePage(4);
+                preparePage(5);
+                preparePage(6);
+                preparePage(7);
+                preparePage(8);
+                preparePage(9);
+                preparePage(10);
+                document.body.style.background = "#c4c4c4";
+                activePage = 1;
+                isInitiated = true;
+            }else {
+                clearPages();
+                preparePage(1);
+                preparePage(2);
+                preparePage(3);
+                preparePage(4);
+                preparePage(5);
+                preparePage(6);
+                preparePage(7);
+                preparePage(8);
+                preparePage(9);
+                preparePage(10);
+                document.body.style.background = "#c4c4c4";
+                activePage = 1;
+                isInitiated = true;
+            }
+            
+        });
+    </script>
+</html>
