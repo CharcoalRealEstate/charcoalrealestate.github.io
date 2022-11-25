@@ -12,9 +12,13 @@
             background-color: #c4c4c4;
             background-size: cover;
             margin:0;
+            min-height: 100vh;
         }
         body * {
             box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
         }
         .Container.Logo img {
             margin: 0 auto !important;
@@ -140,6 +144,41 @@
         .nextBtn, .prevBtn {
             cursor: pointer;
         }
+        .price {
+            color: #84A5F5;
+            font-weight: bolder;
+            font-family: Arial;
+            font-size: 28px;
+        }
+        .price::before {
+            content: '$';
+            margin-right: 5px;
+        }
+        .price, .listid {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .bed, .bath, .sqft {
+            color: #204191;
+            font-family: Arial;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        .listid::before {
+            content: 'Listing ID: ';
+        }
+        .listid {
+            font-size:10px;
+            color:#204191;
+        }
+        @media screen and (max-width:900px) {
+            .listing.Single, #text, #Search {
+                width:100%;
+            }
+            .form {
+                width:90%;
+            }
+        }
     </style>
     <body>
         <div class="Container Logo">
@@ -183,7 +222,7 @@
                     
                 </div>
             </div>
-            <div class="Container Navigator">
+            <div class="Container Navigator" style="display:none;">
                 <div class="prev">
                     <span class="prevBtn">Previous</span>
                 </div>
@@ -310,7 +349,7 @@
             var nbath = 0;
             var sqft = 0;
             var listid = "2" + Math.floor(Math.random() * 990000) + 100000;
-            if(price < 500000) {
+            if(price < 600000) {
                 nbed = 2;
                 nbath = 1;
                 sqft = Math.floor(Math.random() * 1800) + 900;
@@ -324,13 +363,14 @@
                 nbath = Math.floor(Math.random() * 5) + 2; 
                 sqft = Math.floor(Math.random() * 4051) + 9000;
             }
+            sqft = sqft - (sqft % 10);
             var obj = {
-                'price': price,
+                'price': price.toLocaleString(),
                 'nbed': nbed,
                 'nbath': nbath,
                 'listid':listid,
                 'imgURL': imgURL,
-                'sqft':sqft
+                'sqft':sqft.toLocaleString()
             };
             return obj;
         }
@@ -384,6 +424,7 @@
         var submit = document.getElementById("Search");
         submit.addEventListener("click", function(event) {
             event.preventDefault();
+            document.querySelector(".Navigator").style.display = "block";
             if(!isInitiated) {
                 preparePage(1);
                 preparePage(2);
