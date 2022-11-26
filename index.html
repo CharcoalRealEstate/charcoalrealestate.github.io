@@ -30,6 +30,11 @@
             margin: 0 auto;
             width: 90%;
         }
+        .form {
+            padding: 25px;
+            background: #fff;
+            border-radius: 10px;
+        }
         .listing.Single {
             width: 25%;
             float: left;
@@ -51,7 +56,7 @@
             margin-top: 120px;
         }
         #text, #Search {
-            font-size: 36px;
+            font-size: 28px;
             border-radius: 3px;
             box-shadow: none !important;
             border: 1px solid #a7a7a7;
@@ -59,8 +64,17 @@
             background: #f2f2f2ee;
             padding: 5px;
         }
-        #text {width:75%;margin-right:1%}
-        #Search {width:24%}
+        #text {width:80%;margin-right:1%}
+        #Search {width:18%}
+        #Search {
+            background-color: black;
+            color: #fff !important;
+            border-radius: 3px;
+        }
+        #text::placeholder {
+            font-weight: lighter;
+            font-size: 18px;
+        }
         .bed::before {
             content: "";
             display: inline-block;
@@ -186,7 +200,7 @@
         </div>
         <div class="Container FormContainer">
             <div class="form">
-                <input type="text" class="text" id="text" placeholder="type anything" /><input type="button" value="Search" id="Search"/>
+                <input type="text" class="text" id="text" placeholder="Type anything..." /><input type="button" value="Search" id="Search"/>
             </div>
         </div>
         <div class="Container Results">
@@ -344,7 +358,7 @@
         function getAListing() {
             var price = Math.floor(Math.random() * 3000000) + 200000;
             price = price - (price % 1000);
-            var imgURL = "img/img (" + (((Math.floor(Math.random() * 1140474) + 114) % 114) + 1).toString() + ").png"; 
+            var imgURL = "img/img (" + (((Math.floor(Math.random() * 1140474) + 141) % 141) + 1).toString() + ").png"; 
             var nbed = 0;
             var nbath = 0;
             var sqft = 0;
