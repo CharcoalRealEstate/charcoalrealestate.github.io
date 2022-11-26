@@ -193,6 +193,24 @@
                 width:90%;
             }
         }
+        .info, .dprice, .dlistid {
+            filter: blur(6px);
+            -webkit-filter:blur(6px);
+            cursor: none;
+            user-select: none;
+        }
+        .inner + a {
+            text-decoration: none;
+            padding: 12px;
+            text-align: center !important;
+            display: block;
+            margin: 0 auto;
+            color: #fff;
+            font-size: 24px;
+            border: 2px solid #f2f2f2;
+            background: #000;
+            font-family: Arial;
+        }
     </style>
     <body>
         <div class="Container Logo">
@@ -392,7 +410,7 @@
             var r = getAListing();
             var cfr = "<div class='listing Single'><div class='inner'><img src='" + r.imgURL + "' /><div class='info'><span class='bed'>" + r.nbed + "</span><span class='bath'>" + 
                 r.nbath + "</span><span class='sqft'>" + r.sqft + "</span></div><div class='dprice'><p class='price'> " + 
-                r.price + " </p></div><div class='dlistid'><p class='listid'> " + r.listid +  " </p></div></div></div>";
+                r.price + " </p></div><div class='dlistid'><p class='listid'> " + r.listid +  " </p></div></div><a href='#'>Login or Register</a></div>";
                 document.querySelector('#Page' + pnum).innerHTML += cfr;
         }
         function delay(time) {
